@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ user.username }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div style='float: left;'>
+        <p>Username: {{ user.username.title }}</p>
+        <p>First name: {{ user.first_name }}</p>
+        <p>Last name: {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Date joined: {{ user.date_joined }}</p>
+        <p>Age: {{ user.profilemodel.age }}</p>
+        <p>BIO: {{ user.profilemodel.bio }}</p>
+    </div>
+    <div class='my-5' >
+        <img style="width: 200px;" src="{{ user.profilemodel.img.url }}" alt="{{ user.username }}" />
+    </div>
+    <a href="{% url 'update_profile' %}" class='btn btn-warning'>Update profile</a><br><br>
+    <a href="{% url 'password_change' %}" style='color: red;'>Change your password !</a>
+</div>
+{% endblock content %}

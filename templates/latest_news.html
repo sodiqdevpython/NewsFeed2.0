@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load hitcount_tags %}
+
+{% block title %}
+<title>{{ data.title }}</title>
+{% endblock %}
+
+{% block content %}
+<main>
+    <!-- About US Start -->
+    <div class="about-area2 gray-bg pt-60 pb-60">
+        <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Trending Tittle -->
+                        <div class="about-right mb-90">
+                            <div class="about-img">
+                                <img class="image-fluid" style="height: 500px;" src="{{ data.image.url }}" alt="">
+                            </div>
+                            <div class="heading-news mb-30 pt-30">
+                                <h3>{{ data.title }}</h3><br><span>{% get_hit_count for data %} marta ko'rildi</span>
+                            </div>
+                            <div class="about-prea">
+                                <p class="about-pera1 mb-25">{{ data.body }}</p>
+                            </div>
+                        </div>
+                        <div>
+                            {% for com in comments %}
+                                <hr><hr>
+                                <img style="width: 100px; height: 80px; border-radius: 20px;" src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE=" alt="Rasm yuklanmagan"/>
+                                <p>{{ com.user.first_name }}</p>
+                                <p>{{ com.comment_text }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="my-3">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                  <label for="exampleFormControlTextarea1" class="form-label"></label>
+                                  <textarea name="comment_text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                                <input type="submit" value="Izoh qoldirish" class="btn btn-danger">
+                            </form>
+                        </div>
+                        <div>
+
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <!-- New Poster -->
+                        <div class="news-poster d-none d-lg-block">
+                            <img src="{% static 'assets/img/news/news_card.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <!-- About US End -->
+</main>
+{% endblock content %}

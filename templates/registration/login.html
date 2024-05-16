@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container my-5">
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Login</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Parol</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+          </div>
+          <button type="submit" class="btn btn-primary">Kirish</button><br><br>
+          <a href="{% url 'signup' %}" style='color: red;'>Ro'yxatdan o'tish</a>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ user.username }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div style='float: left;'>
+        <p>Ism: {{ user.first_name }}</p>
+        <p>Familiya: {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Ro'yxatdan o'tilgan sana: {{ user.date_joined|date:"d.m.Y" }}</p><br>
+    </div>
+    <div class='my-5' >
+        <img style="width: 200px; margin-left: 100px; border-radius: 10px;" src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE=" alt="{{ user.username }}" />
+    </div>
+<!--    <a href="{% url 'update_profile' %}" class='btn btn-warning'>Profilni yangilash</a><br><br>-->
+<!--    <a href="{% url 'password_change' %}" style='color: red;'>Parolni almashtirish</a>-->
+</div>
+{% endblock content %}
